@@ -1,0 +1,17 @@
+{% extends "main_app/base.html" %}
+
+{% block title %}Maintenance List{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="page-title">Maintenance List</h1>
+    <ul class="maintenance-list">
+        {% for maintenance in maintenances %}
+            <li class="maintenance-item">
+                <a class="maintenance-link" href="{% url 'maintenance_detail' maintenance.id %}">{{ maintenance.date }}</a>
+                <a class="maintenance-link" href="{% url 'maintenance' %}">Maintenance Page</a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

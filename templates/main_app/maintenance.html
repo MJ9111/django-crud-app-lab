@@ -1,0 +1,26 @@
+{% extends "main_app/base.html" %}
+
+{% block title %}Maintenance{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="page-title">Maintenance</h1>
+    <div class="car-list">
+        {% for car in cars %}
+            <div class="car-item">
+                <a class="btn btn-primary" href="{% url 'add_maintenance' car.id %}">Add Maintenance for {{ car.name }}</a>
+            </div>
+        {% endfor %}
+    </div>
+    <ul class="maintenance-list">
+        {% for maintenance in maintenances %}
+            <li class="maintenance-item">
+                <a class="maintenance-link" href="{% url 'maintenance_detail' maintenance.id %}">{{ maintenance.date }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <div class="maintenance-list-link">
+        <a class="btn btn-secondary" href="{% url 'maintenance_list' %}">View All Maintenance</a>
+    </div>
+</div>
+{% endblock %}

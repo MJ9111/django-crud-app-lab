@@ -1,0 +1,50 @@
+{% comment %} <!-- main_app/templates/main_app/part_form.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Part</title>
+</head>
+<body>
+    <a href="{% url 'home' %}">Home</a>
+    <h1>Create Part</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+    </form>
+    <a href="{% url 'parts_index' %}">Cancel</a>
+</body>
+</html> {% endcomment %}
+
+<!-- main_app/templates/main_app/part_form.html -->
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Part</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <!-- Add Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+    {% include "main_app/nav.html" %}
+
+    <div class="container">
+        <h1>Create Part</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Save</button>
+            <a href="{% url 'parts_index' %}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+
+    <!-- Add Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

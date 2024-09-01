@@ -1,0 +1,20 @@
+<!-- main_app/templates/main_app/maintenance_detail.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maintenance Detail</title>
+</head>
+<body>
+    <h1>Maintenance Detail</h1>
+    <p>ID: {{ maintenance.id }}</p>
+    <p>Description: {{ maintenance.description }}</p>
+    <p>Date: {{ maintenance.date }}</p>
+    <p>Cost: {{ maintenance.cost }}</p>
+    <a href="{% url 'maintenance_edit' maintenance.id %}">Edit</a>
+    <a href="{% url 'maintenance_delete' maintenance.id %}">Delete</a>
+    <a href="{% url 'maintenance_list' %}">Back to Maintenance List</a>
+</body>
+</html>

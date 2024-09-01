@@ -1,0 +1,22 @@
+<!-- templates/cars/detail.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ car.name }}</title>
+</head>
+<body>
+    <h1>{{ car.name }}</h1>
+    <p>Model: {{ car.model }}</p>
+    <p>Year: {{ car.year }}</p>
+    <a href="{% url 'car_update' car.id %}">Edit</a>
+    <form action="{% url 'car_delete' car.id %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Delete</button>
+    </form>
+    <a href="{% url 'cars_index' %}">Back to Cars</a>
+</body>
+</html>

@@ -1,0 +1,88 @@
+{% comment %} <!-- main_app/templates/main_app/car_list.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Car List</title>
+</head>
+<body>
+    <a href="{% url 'home' %}">Home</a>
+    <h1>Car List</h1>
+    <ul>
+        {% for car in cars %}
+            <li>
+                {{ car.name }} - {{ car.model }} - {{ car.year }}
+                <a href="{% url 'cars_update' car.pk %}">Edit</a>
+                <a href="{% url 'cars_delete' car.pk %}">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'cars_create' %}">Add New Car</a>
+</body>
+</html> {% endcomment %}
+
+<!-- main_app/templates/main_app/car_list.html -->
+
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Car List</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <!-- Add Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Car Collector</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'car_list' %}">Car List</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'parts_index' %}">Parts List</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'about' %}">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'cars_create' %}">Form Cars</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'parts_create' %}">Form Parts</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="btn btn-primary" href="{% url 'login' %}">Login</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Car List</h1>
+        <ul class="list-group">
+            {% for car in cars %}
+                <li class="list-group-item">
+                    {{ car.name }} - {{ car.model }} - {{ car.year }}
+                    <a class="btn btn-secondary btn-sm" href="{% url 'cars_update' car.pk %}">Edit</a>
+                    <a class="btn btn-danger btn-sm" href="{% url 'cars_delete' car.pk %}">Delete</a>
+                </li>
+            {% endfor %}
+        </ul>
+        <a class="btn btn-success mt-3" href="{% url 'cars_create' %}">Add New Car</a>
+    </div>
+
+    <!-- Add Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

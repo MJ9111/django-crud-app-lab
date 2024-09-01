@@ -1,0 +1,19 @@
+<!-- templates/cars/confirm_delete.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete {{ car.name }}</title>
+</head>
+<body>
+    <h1>Are you sure you want to delete {{ car.name }}?</h1>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Yes, delete</button>
+    </form>
+    <a href="{% url 'car_detail' car.id %}">Cancel</a>
+</body>
+</html>
